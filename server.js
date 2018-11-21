@@ -78,7 +78,7 @@
       });
     };
   };
-  app = express().use(cors()).use(express['static']('app')).get('/api', function(req, res){
+  app = express().use(cors({credentials: true, origin: true})).use(express['static']('app')).get('/api', function(req, res){
     return api(req.query, responsity(res));
   }).get('/*', function(req, res){
     return res.redirect("/#" + req.url);
